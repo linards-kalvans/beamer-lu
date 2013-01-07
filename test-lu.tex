@@ -1,0 +1,273 @@
+% Par pamatu izmantota KDE beamer sagatave http://www.kde.org/kdeslides/
+\documentclass[12pt]{beamer}
+
+\usetheme{lu} % izsaucam LU stilu
+\usepackage{amsmath} % matemātikai ..
+\usepackage[no-math]{fontspec} % sistēmas fontiem ...
+\usepackage{xunicode} % unikodam
+\usepackage{xltxtra} % unikodam
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade} % attēlu veidošanai
+
+% Valodu atbalsts
+%\usepackage{polyglossia} % var izmantot šo, ja nav fixlatvian
+\usepackage{fixlatvian} % http://code.google.com/p/fixlatvian/
+\setdefaultlanguage{latvian}
+\setromanfont{Cambria}
+\setsansfont{Calibri}
+\setmonofont{Consolas}
+% Virsraksts
+\title[Dr. LaTeX Beamer]{Dr. \LaTeX~Beamer}
+% Paplašināts virsraksts
+\subtitle{Kā es iemācījos neuztraukties un man iepatikās slīdi}
+%Autors
+\author[T. Texmaker]{Tex Texmaker}
+%Organizācija
+\institute[LU FMF]{Latvijas Universitātes Fizikas un matemātikas fakultāte}
+%Datums
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Saturs}
+  \tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+  \frame<handout:0>
+  {
+    \frametitle{Saturs}
+    \tableofcontents[currentsection,hideallsubsections]
+  }
+}
+
+\AtBeginSubsection[]
+{
+  \frame<handout:0>
+  {
+    \frametitle{Saturs}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  }
+}
+
+\newcommand<>{\highlighton}[1]{%
+  \alt#2{\structure{#1}}{{#1}}
+}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Šeit sākas saturs %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Ievads}
+
+\begin{frame}
+  \frametitle{Priekšnoteikumi \& mērķi}
+  \framesubtitle{Nekas nav tik postošs kā nezināšanas un entuziasma duets}
+  \begin{block}{LaTeX}
+  \begin{itemize}
+    \item Pirmkārt nepieciešamas kaut nelielas LaTeX priekšzināšanas;
+    \item Šo to var iemācīties šeit.
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Beamer}
+  \begin{itemize}
+    \item Tās vari apgūt aplūkojot šīs prezentācijas pirmkodu.
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Mērķi}
+  \begin{itemize}
+    \item Iemācīties veidot strukturētus slīdus;
+    \item Glītu tēmu lietošana;
+    \item Iekarot visu pasauli;
+    \item Atpūsties...
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Pamatstruktūra}
+\begin{frame}
+	\frametitle{Nodaļas, slīdi un bloki}
+	\framesubtitle{Sakārto visu ``kastītēs''}
+
+	Šo nodaļu sauc "Pamatstruktūra". Un šis slīds ir tas, ko tagad redzi uz ekrāna.
+
+	\begin{block}{Glīts bloks}
+		Blokam ir nosaukums un saturs. Blokā vari ievietot praktiski visu, ko piedāvā LaTeX, piemēram, matemātiskās izteiksmes var ievietot, kā parasti:
+		\begin{equation}
+			\sum_{i=1}^n i = \frac{n \times (n+1)}{2}
+		\end{equation}
+	\end{block}
+
+	Strādā arī ārpus bloka:
+	\begin{equation}
+		\sum_{i=1}^n i^2 = \frac{n \times (n+1) \times (2n+1)}{6}
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dažādi bloku tipi}
+	\framesubtitle{Fui! Krāsas!!}
+	\begin{block}{Standarta bloks}
+		\begin{itemize}
+			\item Standarta bloks, izmantojams grupēšanai.
+			\item Protams, var saturēt sarakstus...
+			\begin{itemize}
+				\item Dažādos līmeņos...
+				\item protams!
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\begin{alertblock}{Trauksmes bloks}
+		UZMANĪBU: Satur ļoti vērtīgu informāciju!
+	\end{alertblock}
+	\begin{example}
+		Piemērus attēlo īpašā blokā...
+	\end{example}
+\end{frame}
+
+\section{Foršas lietiņas}
+\begin{frame}
+	\frametitle{Teksta izcelšana un sadalīšana kolonnās}
+	\framesubtitle{Hei! Skaties te!}
+	\begin{columns}
+		\column{.6\paperwidth}
+			\begin{block}{Parasts bloks}
+				\begin{itemize}
+					\item Normāls teksts.
+					\item \highlighton{Izcelts teksts}, lai pievērstu uzmanību .
+					\item \alert{``Trauksmes'' teksts}, lai atzīmētu īpaši svarīgu informāciju.
+					\item Kā alternatīvu var izmantot
+					\begin{itemize}
+						\alert{\item ``Trauksmi'' saraksta punktā}
+						\highlighton{\item ``Izcelt'' punktu}
+					\end{itemize}
+				\end{itemize}
+			\end{block}
+		\column{.3\textwidth}
+			\begin{alertblock}{Ja ir kas patiešām svarīgs, ...}
+				\alert{... tad var veidot ``trauksmi'' ``trauksmes blokā''}\\
+				Ewww, riebīgi, ne?
+			\end{alertblock}
+	\end{columns}
+\end{frame}
+
+\newcommand{\putlink}[1]{%
+   \pgfsetlinewidth{1.4pt}%
+   \pgfsetendarrow{\pgfarrowtriangle{4pt}}%
+   \pgfline{\pgfxy(1,1)}{\pgfxy(#1,1)}
+}
+
+\begin{frame}
+  \frametitle{Priekškara efekts}
+  \framesubtitle{Saglabājam neziņu!}
+  \begin{block}{Bumba ar laika degli}
+  \begin{enumerate}
+    \item<2-> Divi ...
+    \item<3-> Viens ...
+    \item<4-> Pēdejā iespēja ...
+    \item<5-> BUMS!
+  \end{enumerate}
+  \end{block}
+  \begin{block}{``Animācija"}<6->
+    \begin{pgfpicture}{0cm}{0cm}{7cm}{2cm}
+    \only<1-6>{
+      \putlink{2}
+    }
+    \only<7>{
+      \putlink{4}
+    }
+    \only<8>{
+      \putlink{6}
+    }
+    \only<9>{
+      \putlink{8}
+    }
+    \only<10>{
+      \putlink{10}
+    }
+    \end{pgfpicture}
+  \end{block}
+\end{frame}
+
+\section*{}
+\frame{
+  \vfill
+  \centering
+  \highlighton{
+  \usebeamerfont*{frametitle}Un nu?
+
+  \usebeamerfont*{framesubtitle}Apskatīsim slepeno nodaļu
+  }
+  \vfill
+}
+\begin{frame}
+  \frametitle{Dod savu ieguldījumiu}
+  \framesubtitle{Mums tevi vajag!}
+
+  \begin{block}{Kāpēc?}
+  \begin{itemize}
+    \item \textit{Bīmeris} ir foršs!
+    \item Šo tēmu vēl var uzlabot
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Kā?}
+  \begin{itemize}
+    \item Ņem to!
+    \item Uzlabo tās LaTeX kodu!
+    \item Izmanto savu radošo potenciālu!
+    \item Dokumentē!
+    \item Palīdzi citiem cilvēkiem to izmantot!
+    \item Lieto ...
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Resursi}
+  \framesubtitle{Ja vēlies šo tēmu uzlabot}
+  \begin{thebibliography}{10}
+
+  \beamertemplatearticlebibitems
+
+  \bibitem{beamer-homepage}
+    LaTeX Beamer
+    \newblock {\tt http://latex-beamer.sourceforge.net/}
+
+  \bibitem{beamer-themes}
+    LaTeX Beamer Theme Matrix
+    \newblock {\tt http://www.hartwork.org/beamer-theme-matrix/}
+
+  \bibitem{kdeslides}
+    KDE Presentations
+    \newblock {\tt http://www.kde.org/kdeslides/}
+
+  \end{thebibliography}
+\end{frame}
+
+\frame{
+  \vspace{2cm}
+  {\huge Jautājumi?}
+
+  \vspace{3cm}
+  \begin{flushright}
+    Tex Texmaker
+
+    \structure{\footnotesize{Paldies!}}
+  \end{flushright}
+}
+
+\end{document}

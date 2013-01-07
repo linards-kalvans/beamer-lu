@@ -1,0 +1,147 @@
+% Beamer theme, University of Latvia
+% Based on KDE beamer theme http://www.kde.org/kdeslides/
+%
+% Copyright 2012 by Linards Kalvans <linards.kalvans@lu.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\usetheme{CambridgeUS}
+\usecolortheme{beetle}
+
+\RequirePackage{pgf}
+\RequirePackage{xifthen}
+\providecommand\insertframetitle{}
+
+
+\pgfdeclareimage[width=1.0\paperwidth]{lu-front-bg}{pdf/bg-full.pdf}
+\pgfdeclareimage[width=1.0\paperwidth]{lu-header}{pdf/bg-top.pdf}
+\pgfdeclareimage[width=0.2\paperwidth]{lu-logo}{pdf/lu-logo-white.pdf}
+\pgfdeclareimage[width=\paperwidth]{lu-logo-large}{pdf/lu-logo-full-page.pdf}
+\pgfdeclareimage[width=\paperwidth]{lu-watermark}{pdf/bg-watermark.pdf}
+\pgfdeclareimage[width=\paperwidth]{lu-watermark-frame}{pdf/bg-watermark-frame.pdf}
+
+\definecolor{dark-blue}{RGB}{14, 28, 88}
+\definecolor{text}{RGB}{81,81,81}
+\definecolor{title}{RGB}{49, 64, 128}
+\definecolor{alerted}{RGB}{192, 49, 64}
+\definecolor{example}{RGB}{64, 128, 49}
+
+\usecolortheme[named=dark-blue]{structure}
+
+\setbeamercolor{titlepage}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{navigation}{fg=white}
+\setbeamercolor{footer}{fg=white,bg=dark-blue}
+
+\setbeamercolor*{block title}{bg=title,fg=white}
+\setbeamercolor*{block body}{bg=white,fg=text}
+\setbeamercolor*{normal text}{bg=white,fg=text}
+
+\setbeamercolor*{block title alerted}{bg=alerted,fg=white}
+\setbeamercolor*{alerted text}{bg=white,fg=alerted}
+
+\setbeamercolor*{block title example}{bg=example,fg=white}
+\setbeamercolor*{example text}{bg=white,fg=example}
+
+\setbeamerfont{title}{size=\huge,family=\rm,series=\bfseries,fg=white}
+\setbeamerfont{subtitle}{size=\large,family=\sf,series=\bfseries,fg=white}
+\setbeamerfont{frametitle}{size=\Large,family=\rm,series=\bfseries}
+\setbeamerfont{framesubtitle}{family=\rm,series=\bfseries}
+
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+\setbeamertemplate{itemize item}{\normalsize\raise1.pt\hbox{\donotcoloroutermaths$\Rightarrow$}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raise1.25pt\hbox{\donotcoloroutermaths$\Rightarrow$}}
+\setbeamertemplate{itemize subsubitem}{\footnotesize\raise1.25pt\hbox{\donotcoloroutermaths$\Rightarrow$}}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+\setbeamertemplate{enumerate subsubitem}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+\setbeamertemplate{enumerate mini template}{\insertenumlabel}
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+\setbeamerfont{section number projected}{family=\rmfamily,series=\bfseries,size=\normalsize}
+
+  \setbeamercolor{section in toc shaded}{fg=dark-blue}
+  \setbeamercolor{section in toc}{fg=dark-blue}
+  \setbeamercolor{subsection in toc shaded}{fg=dark-blue}
+  \setbeamercolor{subsection in toc}{fg=dark-blue}
+  
+\setbeamertemplate{subsection in toc}{\hspace*{1em}\footnotesize\raise1.25pt\hbox{ \donotcoloroutermaths$\Rightarrow$}\inserttocsubsection\par}
+\setbeamertemplate{subsubsection in toc}{}
+
+\setbeamertemplate{frametitle}
+{
+  \ifnum\c@framenumber=0%
+    %
+  \else
+  \vskip-0.225cm
+  \hskip-0.1cm\usebeamerfont*{frametitle}\insertframetitle
+  \vskip-0.3cm
+  \begin{beamercolorbox}[leftskip=.7cm,rightskip=.22\paperwidth, wd=\paperwidth,ht=.3cm,sep=0.025cm]{}
+  	\usebeamerfont*{framesubtitle}\insertframesubtitle
+  \end{beamercolorbox}
+  \fi
+}
+
+\setbeamertemplate{headline}{
+  \ifnum\c@framenumber=0%
+    %
+  \else
+  \pgfuseimage{lu-header}
+  \vskip -1.4cm
+  \hspace*{.79\paperwidth}\pgfuseimage{lu-logo}
+  \vskip 0.11cm
+
+  \begin{beamercolorbox}{navigation}
+	\usebeamerfont{navigation}	
+	\insertsectionnavigationhorizontal{0pt}{}{}
+	%\insertnavigation{\paperwidth}
+  \end{beamercolorbox}%
+  \vskip -1.3cm
+  \fi
+}
+
+\setbeamertemplate{footline}
+{
+  \ifnum\c@framenumber=0%
+    %
+  \else
+  \vskip -.2cm
+  \begin{beamercolorbox}[leftskip=.3cm,rightskip=.3cm,wd=\paperwidth,ht=.3cm,sep=0.025cm]{footer}
+    \usebeamerfont{section in head/foot}%
+    \insertshortauthor\expandafter\beamer@ifempty\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+	\hfill    
+    \insertshorttitle
+    \hfill
+    \insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}
+  \fi
+}
+
+\setbeamertemplate{background canvas}{%
+    \ifnum\c@framenumber=0%
+        \pgfuseimage{lu-front-bg}
+	    \hskip -\paperwidth
+	    \pgfuseimage{lu-logo-large}
+	    \hskip -\paperwidth
+	    \pgfuseimage{lu-watermark}
+	\else
+	    \pgfuseimage{lu-watermark-frame}
+    \fi%
+}
+
+\defbeamertemplate*{title page}{titlepage}[1][]
+{
+  \setcounter{framenumber}{0}
+  %\vspace*{-0.1cm}
+  %\hspace*{-0.5cm}
+  %\pgfuseimage{lu-front-bg}
+  \centering\usebeamerfont{title}\usebeamercolor[fg]{titlepage}\inserttitle\par
+  \usebeamerfont{subtitle}\insertsubtitle\par
+  \bigskip
+  \usebeamerfont{author}\insertauthor\par
+  \usebeamerfont{institute}\insertinstitute\par
+  \usebeamerfont{date}\insertdate\par
+}
