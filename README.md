@@ -2,6 +2,7 @@ beamer-lu
 =========
 
 Beamer template for University of Latvia
+The theme was created basing on a Power Point template (http://www.lu.lv/fileadmin/user_upload/lu_portal/par/vesture-tradicijas-un-simbolika/logotipi/prezentacijas/LU_template.ppt) trying to maintain a visual resemblance. Though a few graphical elements were either altered or re-created to obtain sufficient quality.
 
 [Prerequisites]
 1. A XeLaTeX or LaTeX compilator with latex-beamer package is a must, TeX Live MiKTeX or MacTex will be just fine.
