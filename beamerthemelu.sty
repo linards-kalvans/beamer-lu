@@ -15,6 +15,8 @@
 \RequirePackage{xifthen}
 \providecommand\insertframetitle{}
 
+% Change this to match your location of theme
+\graphicspath{/usr/share/texmf-dist/tex/latex/beamerthemelu/pdf/}
 
 \pgfdeclareimage[width=1.0\paperwidth]{lu-front-bg}{pdf/bg-full.pdf}
 \pgfdeclareimage[width=1.0\paperwidth]{lu-header}{pdf/bg-top.pdf}
@@ -46,8 +48,8 @@
 \setbeamercolor*{block title example}{bg=example,fg=white}
 \setbeamercolor*{example text}{bg=white,fg=example}
 
-\setbeamerfont{title}{size=\huge,family=\rm,series=\bfseries,fg=white}
-\setbeamerfont{subtitle}{size=\large,family=\sf,series=\bfseries,fg=white}
+\setbeamerfont{title}{size=\huge,family=\rm,series=\bfseries}
+\setbeamerfont{subtitle}{size=\large,family=\sf,series=\bfseries}
 \setbeamerfont{frametitle}{size=\Large,family=\rm,series=\bfseries}
 \setbeamerfont{framesubtitle}{family=\rm,series=\bfseries}
 
@@ -76,9 +78,9 @@
   \ifnum\c@framenumber=0%
     %
   \else
-  \vskip-0.125cm
+  \vskip-0.25cm
   \hskip-0.1cm\usebeamerfont*{frametitle}\insertframetitle
-  \vskip-0.1cm
+  \vskip-0.25cm
   \begin{beamercolorbox}[leftskip=.7cm,rightskip=.22\paperwidth, wd=\paperwidth,ht=.3cm,sep=0.025cm]{}
   	\usebeamerfont*{framesubtitle}\insertframesubtitle
   \end{beamercolorbox}
